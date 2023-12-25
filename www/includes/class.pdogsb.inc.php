@@ -519,5 +519,26 @@ class PdoGsb
         return $requetePrepare->fetchAll();
                
         }
+        public function majFraisHorsForfait($date, $libelle, $montant,$id, $idVisiteur, $moisSelectionneC)
+    {
+  
+            $dateFr = dateFrancaisVersAnglais($date);
+            $requetePrepare = PdoGSB::$monPdo->prepare(
+                'UPDATE lignefraishorsforfait '
+                . 'SET lignefraishorsforfait.date = :newDateFr ,'
+                .  'lignefraishorsforfait.montant = :newMontant ,'
+                .  'lignefraishorsforfait.libelle = :newLibelle '
+                . 'WHERE lignefraishorsforfait.id = :id '
+                . 'AND lignefraishorsforfait.idvisiteur = :idvisiteur '
+                . 'AND lignefraishorsforfait.mois = :mois'
+            );
+            $requetePrepare->bindParam(':newDateFr',$dateFr, PDO::PARAM_STR);
+            $requetePrepare->bindParam(':newLibelle',$libelle, PDO::PARAM_STR);
+            $requetePrepare->bindParam(':newMontant', $montant, PDO::PARAM_INT);
+            $requetePrepare->bindParam(':id', $id, PDO::PARAM_STR);
+            $requetePrepare->bindParam(':idvisiteur', $idVisiteur, PDO::PARAM_STR);
+            $requetePrepare->bindParam(':mois', $moisSelectionneC, PDO::PARAM_STR);
+            $requetePrepare->execute();
+    }
 }
    

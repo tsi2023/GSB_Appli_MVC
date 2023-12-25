@@ -26,7 +26,7 @@ case 'saisirFrais':
     }
     break;
 case 'validerMajFraisForfait':
-    $lesFrais = filter_input(INPUT_POST, 'lesFrais', FILTER_SANITIZE_STRING);
+    $lesFrais = filter_input(INPUT_POST, 'lesFrais', FILTER_FORCE_ARRAY, FILTER_DEFAULT);
     if (lesQteFraisValides($lesFrais)) {
         $pdo->majFraisForfait($idVisiteur, $mois, $lesFrais);
     } else {
