@@ -101,7 +101,7 @@
                                 </a>
                             </li>
                             <li <?php if ($uc == 'etatFrais') { ?>class="active"<?php } ?>>
-                                <a style="background-color:orangered" href="index.php?uc=suivrePaiement&action=suivrelepaiementdesfichesdefrais">
+                                <a style="background-color:orangered" href="index.php?uc=suivrePaiement&action=suivrelepaiementdesfichesdeFrais">
                                     <span style="color: whitesmoke" class="glyphicon glyphicon-list-alt"></span>
                                     <f style="color: whitesmoke">Suivre le paiement des fiches de frais</f>
                                 </a>
